@@ -41,7 +41,7 @@ clone_source()
 	elif [ "$2" = "meta-jumpnow" ]; then
     	    git clone -b $3 https://github.com/jumpnow/meta-jumpnow.git
 	elif [ "$2" = "meta-bbb" ]; then
-    	    git clone -b $3 https://github.com/jumpnow/meta-bbb.git
+    	    git clone -b $3 https://github.com/lmtan91/meta-bbb.git
 	fi
 	return
     fi
@@ -79,4 +79,4 @@ cp $BBB_DIR/meta-bbb/conf/bblayers.conf.sample $BBB_DIR/build/conf/bblayers.conf
 
 sed -i "s@\${HOME}@$TOP_DIR@g" $BBB_DIR/build/conf/bblayers.conf
 
-bitbake console-image
+bitbake poddota-image
