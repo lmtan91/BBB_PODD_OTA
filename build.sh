@@ -4,14 +4,11 @@
 # build script
 #
 
-USAGE=$"usage: build.sh ( -setup ) 
+USAGE=$"usage: build.sh
 "
-BRANCH="dunfell"
 TOP_DIR=`pwd`
-POKY_DIR=$TOP_DIR/poky-$1
+POKY_DIR=$TOP_DIR/poky-${1:-dunfell}
 BBB_DIR=$TOP_DIR/bbb
-
-echo $TOP_DIR
 
 set -o pipefail
 set -e
@@ -80,3 +77,7 @@ cp $BBB_DIR/meta-bbb/conf/bblayers.conf.sample $BBB_DIR/build/conf/bblayers.conf
 sed -i "s@\${HOME}@$TOP_DIR@g" $BBB_DIR/build/conf/bblayers.conf
 
 bitbake poddota-image
+
+cp $BBB_DIR/meta-bbb/conf/local.conf.installer-image $BBB_DIR/build/conf/local.conf
+bitbake installer-image
+
