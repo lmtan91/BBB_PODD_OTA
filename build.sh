@@ -39,6 +39,8 @@ clone_source()
     	    git clone -b $3 https://github.com/jumpnow/meta-jumpnow.git
 	elif [ "$2" = "meta-bbb" ]; then
     	    git clone -b $3 https://github.com/lmtan91/meta-bbb.git
+	elif [ "$2" = "meta-alencon" ]; then
+    	    git clone -b $3 https://github.com/lmtan91/meta-alencon.git
 	fi
 	return
     fi
@@ -66,6 +68,7 @@ clone_source $POKY_DIR meta-jumpnow dunfell
 mkdir -p $BBB_DIR
 
 clone_source $BBB_DIR meta-bbb dunfell
+clone_source $BBB_DIR meta-alencon dunfell
 
 ### Initialize the build directory
 cd $TOP_DIR
