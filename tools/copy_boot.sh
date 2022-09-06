@@ -1,6 +1,8 @@
 #!/bin/bash
 
+TOP_DIR=`pwd`
 MACHINE=beaglebone
+OETMP="$TOP_DIR/bbb/build/tmp"
 
 if [ "x${1}" = "x" ]; then
     echo "Usage: ${0} <block device>"
@@ -77,9 +79,9 @@ sudo cp ${SRCDIR}/u-boot-${MACHINE}.img /media/card/u-boot.img
 if [ -f ${SRCDIR}/uEnv.txt ]; then
     echo "Copying ${SRCDIR}/uEnv.txt to /media/card"
     sudo cp ${SRCDIR}/uEnv.txt /media/card
-elif [ -f ./uEnv.txt ]; then
-    echo "Copying ./uEnv.txt to /media/card"
-    sudo cp ./uEnv.txt /media/card
+elif [ -f ./tools/uEnv.txt ]; then
+    echo "Copying ./tools/uEnv.txt to /media/card"
+    sudo cp ./tools/uEnv.txt /media/card
 fi
 
 echo "Unmounting ${DEV}"

@@ -1,6 +1,8 @@
 #!/bin/bash
 
+TOP_DIR=`pwd`
 MACHINE=beaglebone
+OETMP="$TOP_DIR/bbb/build/tmp"
 
 if [ "x${1}" = "x" ]; then
     echo  "Usage: ${0} <block device> [ <image-type> [<hostname>] ]"

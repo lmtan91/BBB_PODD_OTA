@@ -1,7 +1,9 @@
 #!/bin/bash
 
+TOP_DIR=`pwd`
 MACHINE=beaglebone
 SUPPORT_SCRIPTS="emmc-uEnv.txt"
+OETMP="$TOP_DIR/bbb/build/tmp"
 
 if [ "x${1}" = "x" ]; then
         echo "Usage: ${0} <block device> [ <image-type> ] ]"
@@ -67,8 +69,8 @@ fi
 
 for file in $SUPPORT_SCRIPTS; do
     if [ ! -f ${SRCDIR}/${file} ]; then
-        if [ ! -f ./${file} ]; then
-            echo "Support script not found: ${file}"
+        if [ ! -f ./tools/${file} ]; then
+            echo "Support script not found: ./tools/${file}"
             exit 1
     	fi
     fi
@@ -107,7 +109,7 @@ for file in $SUPPORT_SCRIPTS; do
     if [ -f $SRCDIR/${file} ]; then
     	sudo cp ${SRCDIR}/${file} /media/card/home/root/emmc
     else
-    	sudo cp ./${file} /media/card/home/root/emmc
+    	sudo cp ./tools/${file} /media/card/home/root/emmc
     fi
 done
 
