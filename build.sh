@@ -88,9 +88,11 @@ build_all()
 	sed -i "s@\${HOME}@$TOP_DIR@g" $BBB_DIR/build/conf/bblayers.conf
 
 	bitbake poddota-image
-
-	cp $BBB_DIR/meta-bbb/conf/local.conf.installer-image $BBB_DIR/build/conf/local.conf
-	bitbake installer-image
+	
+	if [ ! -f $BBB_DIR/build/tmp/deploy/images/beaglebone/installer-image-beaglebone.ext4 ]; then
+		cp $BBB_DIR/meta-bbb/conf/local.conf.installer-image $BBB_DIR/build/conf/local.conf
+		bitbake installer-image
+	fi
 }
 
 ################################################################################
