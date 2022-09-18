@@ -35,3 +35,5 @@ sudo ./tools/copy_emmc_install.sh sdb console
 If you have already configure the correct SSID/PSK in the previous step. If not, modifying in the **/etc/wpa_supplicant.conf**. Then just type the command below to connect automatically to the hotspot
 `ifup wlan0`
 
+# Start ssh service
+`systemctl start sshd`
