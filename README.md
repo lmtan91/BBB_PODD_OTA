@@ -28,7 +28,7 @@ sudo mkdir -p /media/card
 ```
 sudo ./tools/copy_boot.sh sdb
 sudo ./tools/copy_rootfs.sh sdb installer alencon
-sudo ./tools/copy_emmc_install.sh sdb console
+sudo ./tools/copy_emmc_install.sh sdb poddota
 ```
 
 # Connect to WiFi hotspot
