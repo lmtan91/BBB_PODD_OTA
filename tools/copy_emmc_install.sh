@@ -113,6 +113,8 @@ for file in $SUPPORT_SCRIPTS; do
     fi
 done
 
+sync
+
 echo "Unmounting ${DEV}"
 sudo umount ${DEV}
 

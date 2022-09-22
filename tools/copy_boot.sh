@@ -84,6 +84,8 @@ elif [ -f ./tools/uEnv.txt ]; then
     sudo cp ./tools/uEnv.txt /media/card
 fi
 
+sync
+
 echo "Unmounting ${DEV}"
 sudo umount ${DEV}
 
