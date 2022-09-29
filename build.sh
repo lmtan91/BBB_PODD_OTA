@@ -44,6 +44,10 @@ clone_source()
     	    git clone -b $3 https://github.com/lmtan91/meta-bbb.git
 	elif [ "$2" = "meta-alencon" ]; then
     	    git clone -b $3 https://github.com/lmtan91/meta-alencon.git
+	elif [ "$2" = "meta-swupdate" ]; then
+	    git clone -b $3 https://github.com/sbabic/meta-swupdate.git
+	elif [ "$2" = "meta-swupdate-boards" ]; then
+	    git clone -b $3 https://github.com/lmtan91/meta-swupdate-boards.git
 	fi
 	return
     fi
@@ -71,6 +75,8 @@ clone_all()
 	mkdir -p $BBB_DIR
 	clone_source $BBB_DIR meta-bbb dunfell
 	clone_source $BBB_DIR meta-alencon dunfell
+	clone_source $BBB_DIR meta-swupdate dunfell
+	clone_source $BBB_DIR meta-swupdate-boards dunfell 
 }
 
 ###############################################################################
@@ -88,7 +94,8 @@ build_all()
 	sed -i "s@\${HOME}@$TOP_DIR@g" $BBB_DIR/build/conf/bblayers.conf
 
 	bitbake poddota-image
-	
+	bitbake update-image
+
 	if [ ! -f $BBB_DIR/build/tmp/deploy/images/beaglebone/installer-image-beaglebone.ext4 ]; then
 		cp $BBB_DIR/meta-bbb/conf/local.conf.installer-image $BBB_DIR/build/conf/local.conf
 		bitbake installer-image
