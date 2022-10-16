@@ -71,7 +71,7 @@ for file in $SUPPORT_SCRIPTS; do
     if [ ! -f ${SRCDIR}/${file} ]; then
         if [ ! -f ./tools/${file} ]; then
             echo "Support script not found: ./tools/${file}"
-            exit 1
+#            exit 1
     	fi
     fi
 done
